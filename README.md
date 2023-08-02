@@ -1,5 +1,3 @@
-# ThrottlePositionControlwithSimscapeandAUTOSARStandards
-Throttle Position Control with Simscape and AUTOSAR ISO26262 Standards
 # Throttle Position Control with Simscape and AUTOSAR Standards
 
 ## Project Media
@@ -18,15 +16,17 @@ Throttle Position Control with Simscape and AUTOSAR ISO26262 Standards
 | *PID Control Unit* |
 
 ## Description
-I've created a CAN (Controller Area Network) bus system to simulate transmitter and receiver signals between the powertrain and ECU (Electric Control Unit) of the vehicles. To create virtual channels and CAN Pack/ CAN Unpack connections, I used Simulink Vehicle Network Toolbox. Furthermore, I decided to add a Sensor Fusion algorithm to my project in order to observe signal characteristics between IMU sensors and vehicle dynamics. Figure 1 represents the CAN Network. Figures 2 and 3 are showing the wheel and IMU sensor respectively. The last image depicts the comparison of the transmitter and receiver signals. According to the plot, CAN bus can be implemented to create a connection between ECU and the wheels.
+This project consists of 2 different parts:
+In the first part, I've created the car system in the 1st picture using Simulink/Simscape. I declared the parameters of the wheels with the Magic Formula algorithm. While the system is running, you can interactively observe how the speed of the car is affected by changing the incline of the road, the throttle position and the wind speed in the opposite direction.
+In the second part, I explained how to create a throttle position in accordance with AUTOSAR and ISO26262 standards and make it ready for hardware. The 2nd picture shows the I/O inputs, the State Chart section that sorts the hierarchy in the server-client system and the composition block of the whole system. The 3rd picture shows the Software Architecture Model, which includes Adaptive Software Components. You can examine the ports and the event sequences assigned to them in the AUTOSAR Dictionary section. At this stage, you can generate your C++ Code and ARXML files for your hardware with MATLAB Code Generator. If you wish, you can change the table values such as HBridge in the system with the LookUp Table Editor as in the 4th picture. In the 5th picture, there is the function-call Subsystem, which is required to create the Adaptive Software Component and is triggered by the functions we have created in the State Chart. In the last picture, you can see the PID Controller.
 
 ## Tools and Languages
 <a href="https://www.mathworks.com/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" alt="matlab" width="40" height="40"/> </a>
 <p> * MATLAB 2023a </p>
 <p> * Simulink </p>
-<p> * Simulink Powertrain Blockset </p>
+<p> * Simulink Simscape </p>
 <p> * Simulink Desktop Real-Time </p>
-<p> * Simulink Vehicle Network Toolbox </p>
+<p> * Simulink AUTOSAR Blockset </p>
 
 ## Installation
 > 1. Download WheelsCanCommunication.slx and CANCommunicationPlot.m files.
